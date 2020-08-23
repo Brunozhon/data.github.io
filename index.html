@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo JSON</title>
+  </head>
+  <body>
+    <h1>Demo JSON (JavaScript Object Notation)</h1>
+    <p>If you have not learned JSON, please visit <a href="https://www.w3schools.com/js/js_json_intro.asp" target="_blank">js_json_intro.asp</a></p>
+    <p>Extracting a simple JSON string: <button>Try it!</button></p>
+    <p id="simple_json"></p>
+    <script>
+      function simpleJson() {
+        var json = '{"name":"John Doe", "birth":"2020-03-01", "Parents": ["Lella Doe", "Alleson Doe"]}';
+        var realJson = JSON.parse(json, function(key, value) {
+          if (key == "birth") {
+            return new Date(value);
+          } else {
+            return value;
+          }
+        });
+        document.getElementById("simple_json").innerHTML = realJson.name + ", " + 
+          realJson.birth + ", " + 
+          realJson.Parents[0] + ", " +
+          realJson.Parents[1];
+      }
+    </script>
+  </body>
+</html>
